@@ -722,30 +722,33 @@ PYBIND11_MODULE(pywincalc, m) {
              SingleLayerOptics::DistributionMethod::DirectionalDiffuse);
 
   py::class_<wincalc::Product_Data_Optical_Venetian,
-             wincalc::Product_Data_Optical_With_Material,
-             std::shared_ptr<wincalc::Product_Data_Optical_Venetian>>(
-      m, "ProductDataOpticalVenetian")
-      .def(py::init<std::shared_ptr<wincalc::Product_Data_Optical> const &,
-                    double, double, double, double, int,
-                    SingleLayerOptics::DistributionMethod>(),
-           py::arg("product_data_optical"), py::arg("slat_tilt_meters"),
-           py::arg("slat_width_meters"), py::arg("slat_spacing_meters"),
-           py::arg("slat_curvature_meters"), py::arg("numbers_slats"),
-           py::arg("distribution_method") =
-               SingleLayerOptics::DistributionMethod::DirectionalDiffuse)
+      wincalc::Product_Data_Optical_With_Material,
+      std::shared_ptr<wincalc::Product_Data_Optical_Venetian>>(
+          m, "ProductDataOpticalVenetian")
+      .def(py::init<std::shared_ptr<wincalc::Product_Data_Optical> const&,
+          double, double, double, double, int,
+          SingleLayerOptics::DistributionMethod>(),
+          py::arg("product_data_optical"), py::arg("slat_tilt_meters"),
+          py::arg("slat_width_meters"), py::arg("slat_spacing_meters"),
+          py::arg("slat_curvature_meters"), py::arg("numbers_slats"),
+          py::arg("distribution_method") =
+          SingleLayerOptics::DistributionMethod::DirectionalDiffuse)
       .def_readwrite("slat_tilt",
-                     &wincalc::Product_Data_Optical_Venetian::slat_tilt)
+          &wincalc::Product_Data_Optical_Venetian::slat_tilt)
       .def_readwrite("slat_width",
-                     &wincalc::Product_Data_Optical_Venetian::slat_width)
+          &wincalc::Product_Data_Optical_Venetian::slat_width)
       .def_readwrite("slat_spacing",
-                     &wincalc::Product_Data_Optical_Venetian::slat_spacing)
+          &wincalc::Product_Data_Optical_Venetian::slat_spacing)
       .def_readwrite("slat_curvature",
-                     &wincalc::Product_Data_Optical_Venetian::slat_curvature)
+          &wincalc::Product_Data_Optical_Venetian::slat_curvature)
       .def_readwrite("number_slats",
-                     &wincalc::Product_Data_Optical_Venetian::number_slats)
+          &wincalc::Product_Data_Optical_Venetian::number_slats)
       .def_readwrite(
           "distribution_method",
-          &wincalc::Product_Data_Optical_Venetian::distribution_method);
+          &wincalc::Product_Data_Optical_Venetian::distribution_method)
+      .def_readwrite(
+            "is_horizontal",
+          &wincalc::Product_Data_Optical_Venetian::is_horizontal);
 
   py::class_<wincalc::Product_Data_Optical_Woven_Shade,
              wincalc::Product_Data_Optical_With_Material,
